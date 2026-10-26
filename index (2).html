@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ميزان مايه</title>
+<meta name="description" content="ميزان مايه: تطبيق ميزان ماء احترافي بفقاعة حقيقية، ماء واقعي، وقياسات لحظية.">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--g:#d4af37;--g2:#f3d77a;--bg:#0a0a0a;--tx:#f4efe2;--mu:#9a9588;--line:rgba(212,175,55,.18);color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--tx);font:400 16px/1.9 Cairo,sans-serif;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px) 0 0/80px 80px,linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px) 0 0/80px 80px,radial-gradient(circle at 80% 8%,rgba(212,175,55,.16),transparent 45%),radial-gradient(circle at 8% 70%,rgba(212,175,55,.08),transparent 45%)}
+nav{position:fixed;top:calc(10px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);z-index:20;width:min(94vw,520px);display:flex;justify-content:space-between;align-items:center;padding:8px 18px;border-radius:99px;background:rgba(18,18,16,.86);border:1px solid var(--line);backdrop-filter:blur(10px);box-shadow:0 10px 40px rgba(0,0,0,.5)}
+nav b{font-weight:900;color:var(--g2)}nav a{color:var(--tx);text-decoration:none;font:600 13px Cairo;opacity:.85}
+nav .dl{background:linear-gradient(120deg,var(--g),var(--g2));color:#1a1405;padding:3px 16px;border-radius:99px;font-weight:800;opacity:1}
+.hero{min-height:100svh;padding:110px 22px 60px;display:grid;place-items:center;text-align:center}
+.hw{width:min(100%,400px)}
+.phone{position:relative;width:min(62vw,250px);aspect-ratio:9/17;margin:0 auto 36px;border-radius:34px;padding:7px;background:linear-gradient(145deg,#34322a,#0e0e0c);box-shadow:0 30px 70px rgba(212,175,55,.25),inset 0 0 0 1px rgba(255,255,255,.1);animation:fl 5s ease-in-out infinite}
+@keyframes fl{50%{transform:translateY(-10px) rotate(-1.5deg)}}
+.scr{position:relative;width:100%;height:100%;border-radius:28px;background:radial-gradient(circle at 50% 30%,#2a2208,#0a0905 70%);overflow:hidden}
+.scr::before{content:"";position:absolute;top:7px;left:50%;width:50px;height:6px;margin-left:-25px;border-radius:6px;background:#000;z-index:2}
+.tube{position:absolute;border-radius:99px;background:linear-gradient(#1c1a12,#0c0b08);border:1px solid var(--line);overflow:hidden}
+.th{left:12%;right:12%;top:14%;height:30px}.tv{left:7%;top:24%;bottom:12%;width:30px}
+.tube i{position:absolute;width:22px;height:22px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff7d0,var(--g) 60%,#7a5f10);box-shadow:0 0 14px var(--g);transition:background .3s}
+.th i{top:3px}.tv i{left:3px}
+.rd{position:absolute;left:18%;right:8%;top:24%;bottom:12%;border-radius:50%;margin:auto;aspect-ratio:1;width:70%;height:max-content;border:1px solid var(--line);background:radial-gradient(circle,#15130c,#070604);display:grid;place-items:center;top:40%;transform:translateY(-30%)}
+.rd::before,.rd::after{content:"";position:absolute;background:var(--line)}.rd::before{left:50%;top:0;bottom:0;width:1px}.rd::after{top:50%;left:0;right:0;height:1px}
+.rd i{position:absolute;width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff7d0,var(--g) 60%,#7a5f10);box-shadow:0 0 18px var(--g)}
+.ro{position:absolute;bottom:4%;left:0;right:0;font:800 15px Cairo;color:var(--g2);letter-spacing:.04em}
+h1{font:900 clamp(40px,12vw,64px)/1.2 Cairo;background:linear-gradient(100deg,var(--g2),var(--g));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hw p{color:var(--mu);margin:8px 0 22px}
+.btn{display:inline-block;padding:11px 30px;border-radius:99px;background:linear-gradient(120deg,var(--g),var(--g2));color:#1a1405;font:800 16px Cairo;text-decoration:none;box-shadow:0 0 26px rgba(212,175,55,.4)}
+.btn.o{background:none;border:1px solid var(--line);color:var(--tx);box-shadow:none;margin-inline-start:8px}
+section{padding:70px 22px;max-width:960px;margin:auto}
+h2{font:900 clamp(28px,7vw,40px)/1.3 Cairo;text-align:center;margin-bottom:34px;color:var(--g2)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.card{padding:24px;border-radius:20px;background:linear-gradient(160deg,rgba(212,175,55,.08),rgba(255,255,255,.02));border:1px solid var(--line);opacity:0;transform:translateY(34px);transition:.7s}
+.card.in{opacity:1;transform:none}
+.card b{display:block;font:800 18px Cairo;color:var(--g2)}.card span{color:var(--mu);font-size:14px}
+.card svg{width:34px;height:34px;margin-bottom:8px;fill:none;stroke:var(--g);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.steps{display:grid;gap:14px;counter-reset:s}
+.steps div{counter-increment:s;padding:18px 22px;border-radius:16px;border:1px solid var(--line);position:relative;padding-inline-start:70px}
+.steps div::before{content:counter(s);position:absolute;inset-inline-start:18px;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:var(--g);color:#1a1405;font-weight:900}
+.cta{text-align:center}footer{text-align:center;color:var(--mu);font-size:13px;padding:30px 0 40px}
+@media(prefers-reduced-motion:reduce){.phone{animation:none}.card{transition:none}}
+</style>
+</head>
+<body>
+<nav><b>ميزان مايه</b><a href="#f">المميزات</a><a href="#h">إزاي بيشتغل</a><a class="dl" href="#d">حمّل</a></nav>
+
+<header class="hero"><div class="hw">
+<div class="phone"><div class="scr">
+<div class="tube th"><i id="bh"></i></div>
+<div class="tube tv"><i id="bv"></i></div>
+<div class="rd"><i id="br"></i></div>
+<div class="ro" id="ro">X 0.0° · Y 0.0°</div>
+</div></div>
+<h1>ميزان مايه</h1>
+<p id="ty">ميزان ماء بفقاعة حقيقية</p>
+<a class="btn" href="./MizanMayah.apk" download="MizanMayah.apk">حمّل التطبيق</a><a class="btn o" href="#f">المميزات</a>
+</div></header>
+
+<section id="f"><h2>مميزات التطبيق</h2><div class="grid" id="g"></div></section>
+
+<section id="h"><h2>إزاي بيشتغل</h2><div class="steps">
+<div>حط الموبايل على السطح اللي عايز تقيسه.</div>
+<div>الفقاعة والأنابيب بيوضحوا الميل على المحورين لحظيًا.</div>
+<div>لما توصل صفر، هتسمع صوت وتحس بهزة، واللون بيتغير للذهبي.</div>
+<div>اضغط تثبيت علشان تحفظ القراءة وتسميها.</div>
+</div></section>
+
+<section id="d" class="cta"><h2>جاهز تقيس صح؟</h2><a class="btn" href="./MizanMayah.apk" download="MizanMayah.apk">حمّل ميزان مايه</a></section>
+<footer>ميزان مايه © 2026</footer>
+
+<script>
+(function(){
+var F=[["M3 12h18M12 3v18","فقاعة حقيقية","أنبوبتين وفقاعة دايرية بيتحركوا بسلاسة مع ميل الموبايل."],
+["M12 3c3 4 6 7 6 11a6 6 0 0 1-12 0c0-4 3-7 6-11z","ماء واقعي","فيزيا مياه واقعية كأن في ماء حقيقي جوه الموبايل."],
+["M4 14h4l2-6 4 10 2-4h4","رسم الاهتزاز","رسم بياني للاهتزاز وإحصائيات للميل ومدته."],
+["M3 12a9 9 0 0 1 18 0v6H3z","وضع الأعمى","صوت بيدلك على الميل من غير ما تبص على الشاشة."],
+["M12 8v4l3 2M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z","تثبيت وتسمية","احفظ القراءات وسمّيها وراجعها من القائمة الجانبية."],
+["M5 12l5 5L20 7","معايرة","زرار معايرة وفلتر تنعيم علشان القراءة تبقى دقيقة."]];
+document.getElementById("g").innerHTML=F.map(function(f){return '<div class="card"><svg viewBox="0 0 24 24"><path d="'+f[0]+'"/></svg><b>'+f[1]+'</b><span>'+f[2]+'</span></div>'}).join("");
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll(".card").forEach(function(c){io.observe(c)});
+var bh=document.getElementById("bh"),bv=document.getElementById("bv"),br=document.getElementById("br"),ro=document.getElementById("ro");
+var tx=0,ty=0,t=0,x=0,y=0;
+function pos(){
+ var th=bh.parentNode.clientWidth-26,tv=bv.parentNode.clientHeight-26,rd=br.parentNode.clientWidth/2-18;
+ bh.style.left=(th/2+x*th/2)+"px";bv.style.top=(tv/2+y*tv/2)+"px";
+ br.style.left="calc(50% - 15px + "+(x*rd)+"px)";br.style.top="calc(50% - 15px + "+(y*rd)+"px)";
+ var ok=Math.abs(x)<.04&&Math.abs(y)<.04;
+ ro.textContent="X "+(x*20).toFixed(1)+"° · Y "+(y*20).toFixed(1)+"°";
+ ro.style.color=ok?"#8dff9e":"";
+}
+function loop(){t+=.016;
+ if(!manual){tx=Math.sin(t*.9)*.55*Math.max(0,Math.sin(t*.25)+.2);ty=Math.cos(t*.7)*.45*Math.max(0,Math.sin(t*.25)+.2)}
+ x+=(tx-x)*.08;y+=(ty-y)*.08;pos();requestAnimationFrame(loop)}
+var manual=false,mt;
+function setT(a,b){manual=true;tx=a;ty=b;clearTimeout(mt);mt=setTimeout(function(){manual=false},2500)}
+addEventListener("deviceorientation",function(e){if(e.gamma==null)return;setT(Math.max(-1,Math.min(1,e.gamma/25)),Math.max(-1,Math.min(1,e.beta/25)))});
+addEventListener("pointermove",function(e){if(e.pointerType==="mouse")setT((e.clientX/innerWidth-.5)*2,(e.clientY/innerHeight-.5)*2)});
+if(matchMedia("(prefers-reduced-motion:reduce)").matches){tx=ty=0;pos()}else loop();
+var W=["ميزان ماء بفقاعة حقيقية","ماء واقعي جوه موبايلك","صوت وهزة عند الصفر","قراءات محفوظة بأسماءك"],i=0,j=0,d=0,el=document.getElementById("ty");
+(function tp(){var w=W[i];if(!d){el.textContent=w.slice(0,++j);if(j>=w.length){d=1;return setTimeout(tp,1600)}return setTimeout(tp,80)}el.textContent=w.slice(0,--j);if(j<=0){d=0;i=(i+1)%W.length;return setTimeout(tp,300)}setTimeout(tp,35)})();
+})();
+</script>
+</body>
+</html>
